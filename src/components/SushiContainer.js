@@ -2,16 +2,16 @@ import React from "react";
 import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 
-function SushiContainer({fourSushis}) {
+function SushiContainer({fourSushis, getSushis, handleSushiClick}) {
     
   const sushiList = fourSushis.filter(s => !s.eaten).map(s => {
-    return <Sushi sushi={s}/>
+    return <Sushi key={s.id} sushi={s} handleSushiClick={handleSushiClick}/>
   })
 
   return (
     <div className="belt">
       {sushiList}
-      <MoreButton />
+      <MoreButton getSushis={getSushis}/>
     </div>
   );
 }

@@ -7,6 +7,7 @@ const API = "http://localhost:3001/sushis";
 function App() {
   const [sushis, setSushis] = useState([])
   const [fourSushis, setFourSushis] = useState([])
+  const [budget, setBudget] = useState(100)
 
   useEffect(() => {
     fetch(API) 
@@ -14,15 +15,25 @@ function App() {
     .then(data => {
       const allSushis = data.map(s => ({...s, eaten: false}))  
       setSushis(allSushis)
-      const four = sushis.splice(0, 4)
+      const four = allSushis.splice(0, 4)
       setFourSushis(four)
     })
   }, [])  
 
+  function getSushis() {
+    const nextFourSushis = sushis.splice(0, 4)
+    setFourSushis(nextFourSushis)
+  }
+
+  function handleSushiClick(e) {
+    console.log(e.target);
+    // fourSushis.filter(s => s.id)
+  }
+
   return (
     <div className="app">
-      <SushiContainer fourSushis={fourSushis}/>
-      <Table />
+      <SushiContainer fourSushis={fourSushis} getSushis={getSushis} handleSushiClick={handleSushiClick}/>
+      <Table sushis={sushis} budget={budget}/>
     </div>
   );
 }
