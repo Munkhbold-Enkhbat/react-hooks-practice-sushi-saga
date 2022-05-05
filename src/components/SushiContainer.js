@@ -4,7 +4,7 @@ import Sushi from "./Sushi";
 
 function SushiContainer({fourSushis, getSushis, handleSushiClick}) {
     
-  const sushiList = fourSushis.filter(s => !s.eaten).map(s => {
+  const sushiList = fourSushis.map(s => {
     return <Sushi key={s.id} sushi={s} handleSushiClick={handleSushiClick}/>
   })
 
