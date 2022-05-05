@@ -1,9 +1,9 @@
 import React from "react";
 
-function Table({ plates = [], budget }) {
+function Table({ eatenSushis, budget }) {
   // renders an empty plate for every element in the array
-  const emptyPlates = plates.map((_, index) => (
-    <div key={index} className="empty-plate" style={{ top: -7 * index }} />
+  const emptyPlates = eatenSushis.map((s, index) => (
+    <div key={s.id} className="empty-plate" style={{ top: -7 * index }} />
   ));
 
   return (
