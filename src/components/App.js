@@ -26,9 +26,8 @@ function App() {
     setFourSushis(nextFourSushis)
   }
 
-  function handleSushiClick(e) {     
+  function handleSushiClick(e) {      
     const eatenSushi = fourSushis.find(s => s.id === parseInt(e.target.id)) 
-    // debugger
     if(eatenSushi.price <= budget) {
       eatenSushi.eaten = true
       const emptyPlate = [...eatenSushis, eatenSushi]
